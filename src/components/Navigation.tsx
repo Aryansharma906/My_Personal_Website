@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -18,28 +18,40 @@ const Navigation = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // Throttle scroll events for better performance
+    let ticking = false;
+    const throttledHandleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", throttledHandleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", throttledHandleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
+  const scrollToSection = useCallback((href: string) => {
     const element = document.querySelector(href === "#home" ? "body" : href);
     element?.scrollIntoView({ behavior: "smooth" });
     setIsMobileMenuOpen(false);
-  };
+  }, []);
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-background/98 backdrop-blur-sm border-b border-border shadow-sm' 
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+          ? 'bg-background/98 backdrop-blur-sm border-b border-border shadow-sm'
           : 'bg-background/80 backdrop-blur-sm'
-      }`}
+        }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <button 
+          <button
             onClick={() => scrollToSection("#home")}
             className="text-2xl font-heading font-bold text-primary hover:scale-105 transition-smooth"
           >
@@ -58,7 +70,7 @@ const Navigation = () => {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
               </button>
             ))}
-            <Button 
+            <Button
               className="bg-primary hover:bg-primary/90 shadow-bronze transition-smooth"
               onClick={() => scrollToSection("#contact")}
             >
@@ -88,7 +100,7 @@ const Navigation = () => {
               </button>
             ))}
             <div className="px-4 pt-2">
-              <Button 
+              <Button
                 className="w-full bg-primary hover:bg-primary/90 shadow-bronze transition-smooth"
                 onClick={() => scrollToSection("#contact")}
               >
