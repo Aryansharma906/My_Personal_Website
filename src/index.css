@@ -122,6 +122,10 @@ All colors MUST be HSL.
     background: var(--gradient-accent);
   }
 
+  .bg-gradient-copper {
+    background: linear-gradient(135deg, hsl(var(--copper)), hsl(220 15% 35%));
+  }
+
   .shadow-bronze {
     box-shadow: var(--shadow-bronze);
   }
@@ -140,5 +144,47 @@ All colors MUST be HSL.
 
   .hover-lift {
     @apply transition-smooth hover:-translate-y-1 hover:shadow-bronze;
+  }
+
+  .gradient-text {
+    background: var(--gradient-bronze);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-effect {
+    @apply bg-background/50 backdrop-blur-md border border-border/50;
+  }
+
+  .shine-effect {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shine-effect::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+  }
+
+  @keyframes shine {
+    0% {
+      transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+      transform: translateX(100%) rotate(45deg);
+    }
   }
 }
