@@ -13,12 +13,16 @@ import FAQ from "@/components/FAQ";
 import Insights from "@/components/Insights";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { Blog } from "@/components/blog";
+import { Music } from "@/components/music";
+import { Research } from "@/components/research";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       <ScrollProgress />
       <Navigation />
+
       <main>
         <Hero />
         <About />
@@ -29,8 +33,12 @@ const Index = () => {
         <Testimonials />
         <FAQ />
         <Insights />
+        <Blog />
+        <Music />
+        <Research />
         <Contact />
       </main>
+
       <Footer />
       <BackToTop />
       <AIChat />
