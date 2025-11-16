@@ -38,22 +38,22 @@ const Hero = () => {
               </h1>
               
               <div className="flex flex-wrap items-center gap-3 text-xl sm:text-2xl text-foreground/70">
-                <span className="font-semibold text-foreground">Computer Science Student</span>
+                <span className="font-semibold text-foreground">Full-Stack Developer</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
-                <span>AI/ML Enthusiast</span>
+                <span>AR/WebXR Pioneer</span>
               </div>
             </div>
             
             {/* Quote */}
             <blockquote className="relative pl-6 border-l-4 border-primary/30 py-2">
               <p className="text-lg sm:text-xl text-foreground/60 italic">
-                "Code in one hand, melody in the other — building tomorrow."
+                "Patterns emerge at the intersection of code, creativity, and cognition. I build experiences that resonate."
               </p>
             </blockquote>
             
             {/* Description */}
             <p className="text-lg text-foreground/70 leading-relaxed max-w-xl">
-              A Creative Computer Science Student With More Than <span className="font-semibold text-foreground">5 Years Of Experience</span> Who Is Always Excited To Work With You To Creating Wonderful Visual Designs!
+              A polymath full-stack developer with <span className="font-semibold text-foreground">5+ years of experience</span> building AI-powered web experiences, AR/WebXR innovations, and intelligent automation pipelines. Combining TypeScript precision with strategic thinking and creative vision.
             </p>
 
             {/* CTA Buttons */}
