@@ -6,35 +6,39 @@ const projects = [
   {
     icon: Heart,
     title: "Cardiac Health Prediction System",
-    description: "Advanced machine learning solution that predicts cardiac events based on comprehensive medical history. Provides personalized prevention tips and lifestyle guidance to help users maintain optimal heart health.",
+    description: "Advanced machine learning solution leveraging pattern recognition to predict cardiac events with remarkable accuracy. Features personalized prevention algorithms and lifestyle recommendations powered by data-driven insights.",
     technologies: ["Python", "Machine Learning", "Healthcare AI", "Data Analysis"],
     featured: true,
     image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80",
-    gradient: "from-red-500/20 to-pink-500/20"
+    gradient: "from-red-500/20 to-pink-500/20",
+    psychometricInsight: "Demonstrates pattern recognition (95) through predictive modeling and systems thinking in healthcare applications"
   },
   {
     icon: Cloud,
-    title: "Weather AI App",
-    description: "User-friendly weather application built with React, featuring innovative design and real-time weather data integration.",
-    technologies: ["React", "API Integration", "UI/UX"],
+    title: "AR/WebXR Interactive Experience",
+    description: "Innovative augmented reality web experience showcasing spatial computing capabilities. Merges TypeScript precision with immersive UI design, enabling users to interact with 3D content in browser-native environments.",
+    technologies: ["WebXR", "TypeScript", "React Three Fiber", "Interactive Design"],
     image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&q=80",
-    gradient: "from-blue-500/20 to-cyan-500/20"
+    gradient: "from-blue-500/20 to-cyan-500/20",
+    psychometricInsight: "Exemplifies creative synthesis (94) by bridging web development, spatial design, and cognitive UX architecture"
   },
   {
     icon: Volume2,
-    title: "Speech Translation Tool",
-    description: "Accessibility-driven tool that breaks speech into phonetics for improved pronunciation, helping speech-impaired users communicate more effectively.",
-    technologies: ["NLP", "Python", "Accessibility"],
+    title: "Speech Accessibility & NLP Tool",
+    description: "Human-centered accessibility solution powered by natural language processing. Transforms speech into phonetic precision, enabling improved communication for speech-impaired users through intelligent analysis and adaptive feedback.",
+    technologies: ["NLP", "Python", "Accessibility", "Audio Processing"],
     image: "https://images.unsplash.com/photo-1589254065878-42c9da997008?w=800&q=80",
-    gradient: "from-purple-500/20 to-indigo-500/20"
+    gradient: "from-purple-500/20 to-indigo-500/20",
+    psychometricInsight: "Reflects emotional resilience (88) and strategic foresight (90) in designing inclusive technology solutions"
   },
   {
     icon: Gamepad2,
-    title: "T-Rex Game",
-    description: "Interactive browser-based game with smooth animations and engaging gameplay mechanics.",
-    technologies: ["JavaScript", "HTML5", "Game Dev"],
+    title: "Interactive Game Framework",
+    description: "Sophisticated browser-based gaming system featuring micro-interactions, state management, and smooth animations. Demonstrates mastery of responsive design and performance optimization for engaging user experiences.",
+    technologies: ["JavaScript", "HTML5/Canvas", "Game Design", "Animation"],
     image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80",
-    gradient: "from-green-500/20 to-emerald-500/20"
+    gradient: "from-green-500/20 to-emerald-500/20",
+    psychometricInsight: "Shows creative synthesis through balancing technical constraints with engaging user interaction design"
   }
 ];
 
@@ -100,7 +104,7 @@ const Projects = () => {
                         {project.description}
                       </p>
 
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 mb-4">
                         {project.technologies.map((tech) => (
                           <Badge
                             key={tech}
@@ -115,6 +119,12 @@ const Projects = () => {
                           </Badge>
                         ))}
                       </div>
+
+                      {project.psychometricInsight && (
+                        <div className="bg-primary/5 border border-primary/20 rounded-lg p-3 text-sm text-foreground/75 italic group-hover:bg-primary/10 transition-colors">
+                          <span className="text-primary/80 font-semibold">Cognitive insight:</span> {project.psychometricInsight}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </Card>

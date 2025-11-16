@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import ScrollProgress from "@/components/ScrollProgress";
 import BackToTop from "@/components/BackToTop";
+import AIChat from "@/components/AIChat";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Stats from "@/components/Stats";
@@ -32,6 +33,7 @@ const Index = () => {
       </main>
       <Footer />
       <BackToTop />
+      <AIChat />
     </div>
   );
 };

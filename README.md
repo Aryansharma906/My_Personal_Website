@@ -260,10 +260,12 @@ I welcome contributions and suggestions! Here's how:
 Please maintain the code style and include tests where appropriate!
 
 ---
+Copyright (c) 2025 Aryan Sharma
 
-## 📜 License
+All rights reserved. This project and its contents are for educational purposes only. No part of this project may be copied, modified, distributed, or used for commercial purposes without prior written permission from the author.
 
-This project is open-source and available for educational purposes. Feel free to learn from it!
+Unauthorized use, reproduction, or distribution is strictly prohibited.
+
 
 ---
 
