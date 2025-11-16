@@ -5,25 +5,25 @@ const skills = [
     icon: BarChart3,
     title: "Data Analysis",
     description: "Transforming raw data into actionable insights with advanced analytical techniques",
-    color: "primary"
+    gradient: "bg-gradient-bronze"
   },
   {
     icon: Code,
     title: "Python Programming",
     description: "Crafting elegant solutions with Python for web development, automation, and AI",
-    color: "accent"
+    gradient: "bg-gradient-accent"
   },
   {
     icon: Brain,
     title: "Natural Language Processing",
     description: "Building intelligent systems that understand and process human language",
-    color: "copper"
+    gradient: "bg-gradient-copper"
   },
   {
     icon: FileSpreadsheet,
     title: "Excel Mastery",
     description: "Expert-level data handling, visualization, and complex formula optimization",
-    color: "primary"
+    gradient: "bg-gradient-bronze"
   }
 ];
 
@@ -46,20 +46,20 @@ const Skills = () => {
             {skills.map((skill, index) => {
               const Icon = skill.icon;
               return (
-                <div 
+                <div
                   key={skill.title}
                   className="bg-card border border-border rounded-lg p-8 hover-lift animate-fade-in group"
                   style={{ animationDelay: `${0.2 + index * 0.1}s` }}
                 >
                   <div className="flex items-start gap-4">
-                    <div className={`bg-gradient-${skill.color === 'primary' ? 'bronze' : skill.color === 'copper' ? 'copper' : 'bronze'} p-4 rounded-lg group-hover:scale-110 transition-smooth`}>
+                    <div className={`${skill.gradient} p-4 rounded-lg group-hover:scale-110 transition-smooth flex-shrink-0`}>
                       <Icon className="w-8 h-8 text-background" />
                     </div>
                     <div className="flex-1">
-                      <h3 className={`text-2xl font-heading font-semibold mb-3 text-${skill.color}`}>
+                      <h3 className="text-2xl font-heading font-semibold mb-3 text-foreground">
                         {skill.title}
                       </h3>
-                      <p className="text-foreground/80 leading-relaxed">
+                      <p className="text-foreground/75 leading-relaxed">
                         {skill.description}
                       </p>
                     </div>

@@ -35,12 +35,12 @@ const Contact = () => {
                 >
                   <div className="bg-card border border-border rounded-lg p-6 hover-lift group h-full">
                     <div className="flex items-center gap-4">
-                      <div className={`bg-gradient-${contact.color === 'copper' ? 'copper' : 'bronze'} p-4 rounded-lg group-hover:scale-110 transition-smooth`}>
+                      <div className="bg-gradient-bronze p-4 rounded-lg group-hover:scale-110 transition-smooth flex-shrink-0">
                         <Icon className="w-6 h-6 text-background" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm text-muted-foreground mb-1">{contact.label}</p>
-                        <p className={`font-semibold text-${contact.color} truncate group-hover:text-accent transition-smooth`}>
+                        <p className="font-semibold text-primary truncate group-hover:text-accent transition-smooth">
                           {contact.value}
                         </p>
                       </div>

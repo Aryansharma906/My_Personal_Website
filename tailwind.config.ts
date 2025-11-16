@@ -63,7 +63,7 @@ export default {
         },
       },
       fontFamily: {
-        heading: ['Inter', 'sans-serif'],
+        heading: ['Playfair Display', 'serif'],
         body: ['Inter', 'sans-serif'],
       },
       borderRadius: {

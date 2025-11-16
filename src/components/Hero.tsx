@@ -105,35 +105,35 @@ const Hero = () => {
           </div>
 
           {/* Profile image with modern design */}
-          <div className="flex justify-center lg:justify-end order-1 lg:order-2 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <div className="relative">
-              {/* Decorative elements */}
-              <div className="absolute -top-6 -right-6 w-24 h-24 border-4 border-primary/20 rounded-3xl rotate-12" />
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary/5 rounded-3xl -rotate-6" />
-              
+          <div className="flex justify-center lg:justify-end order-1 lg:order-2 animate-fade-in px-2" style={{ animationDelay: '0.2s' }}>
+            <div className="relative w-full max-w-sm lg:max-w-none">
+              {/* Decorative elements - hidden on mobile */}
+              <div className="hidden sm:block absolute -top-6 -right-6 w-24 h-24 border-4 border-primary/20 rounded-3xl rotate-12" />
+              <div className="hidden sm:block absolute -bottom-6 -left-6 w-32 h-32 bg-primary/5 rounded-3xl -rotate-6" />
+
               {/* Main image container */}
               <div className="relative group">
                 {/* Background shape */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/20 to-transparent rounded-[3rem] rotate-3 scale-105 opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                
+
                 {/* Colored background blob */}
                 <div className="absolute -inset-4 bg-primary/20 rounded-[3.5rem] -rotate-6 blur-xl opacity-50" />
-                
+
                 {/* Image wrapper */}
-                <div className="relative bg-gradient-to-br from-primary via-accent to-primary p-1 rounded-[3rem] shadow-2xl">
-                  <div className="bg-background rounded-[2.85rem] p-1">
-                    <img 
-                      src={profileImg} 
+                <div className="relative bg-gradient-to-br from-primary via-accent to-primary p-1 rounded-[2rem] sm:rounded-[3rem] shadow-2xl">
+                  <div className="bg-background rounded-[1.85rem] sm:rounded-[2.85rem] p-1">
+                    <img
+                      src={profileImg}
                       alt="Aryan Sharma - Computer Science Student"
-                      className="w-72 h-80 sm:w-80 sm:h-96 lg:w-96 lg:h-[28rem] rounded-[2.7rem] object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                      className="w-56 h-64 sm:w-80 sm:h-96 lg:w-96 lg:h-[28rem] rounded-[1.7rem] sm:rounded-[2.7rem] object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                     />
                   </div>
                 </div>
 
                 {/* Floating badge */}
-                <div className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground px-6 py-3 rounded-2xl shadow-lg animate-float">
-                  <p className="text-sm font-bold">5+ Years</p>
-                  <p className="text-xs opacity-90">Experience</p>
+                <div className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 bg-primary text-primary-foreground px-4 py-2 sm:px-6 sm:py-3 rounded-2xl shadow-lg animate-float text-xs sm:text-sm">
+                  <p className="font-bold">5+ Years</p>
+                  <p className="opacity-90">Experience</p>
                 </div>
               </div>
             </div>

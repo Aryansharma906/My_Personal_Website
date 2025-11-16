@@ -53,7 +53,7 @@ const Projects = () => {
             Innovative solutions combining creativity, technical expertise, and real-world impact
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.map((project, index) => {
               const Icon = project.icon;
               return (
@@ -61,13 +61,13 @@ const Projects = () => {
                   key={project.title}
                   className={`overflow-hidden border-2 hover-lift animate-fade-in group ${
                     project.featured
-                      ? 'border-primary shadow-glow md:col-span-2'
+                      ? 'border-primary shadow-glow col-span-1 md:col-span-2'
                       : 'border-border'
                   }`}
                   style={{ animationDelay: `${0.2 + index * 0.1}s` }}
                 >
-                  <div className={project.featured ? 'md:flex' : ''}>
-                    <div className={`relative ${project.featured ? 'md:w-1/2' : 'w-full'} h-64 overflow-hidden`}>
+                  <div className={project.featured ? 'md:flex flex-col md:flex-row' : ''}>
+                    <div className={`relative ${project.featured ? 'md:w-1/2' : 'w-full'} h-48 sm:h-64 overflow-hidden`}>
                       <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`} />
                       <img
                         src={project.image}
