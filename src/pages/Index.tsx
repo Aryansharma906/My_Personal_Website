@@ -13,9 +13,10 @@ import FAQ from "@/components/FAQ";
 import Insights from "@/components/Insights";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import { Blog } from "@/components/blog";
-import { Music } from "@/components/music";
-import { Research } from "@/components/research";
+import Blog from "@/components/blog";
+import Music from "@/components/music";
+import Research from "@/components/research";
+
 
 const Index = () => {
   return (
