@@ -3,6 +3,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import BackToTop from "@/components/BackToTop";
 import AIChat from "@/components/AIChat";
 import Hero from "@/components/Hero";
+import ResumeHighlight from "@/components/ResumeHighlight";
 import About from "@/components/About";
 import Stats from "@/components/Stats";
 import Services from "@/components/Services";
@@ -14,8 +15,8 @@ import Insights from "@/components/Insights";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Blog from "@/components/blog";
-import Music from "@/components/music";
 import Research from "@/components/research";
+import Certificates from "@/components/Certificates";
 
 
 const Index = () => {
@@ -26,6 +27,7 @@ const Index = () => {
 
       <main>
         <Hero />
+        <ResumeHighlight />
         <About />
         <Stats />
         <Services />
@@ -35,8 +37,8 @@ const Index = () => {
         <FAQ />
         <Insights />
         <Blog />
-        <Music />
         <Research />
+        <Certificates />
         <Contact />
       </main>
 

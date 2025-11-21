@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Download, ArrowRight, Sparkles } from "lucide-react";
+import { Download, ArrowRight, Sparkles, FileText, Mail, Github, Linkedin } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
 import socials from "@/data/socials";
 import profile from "@/data/profile";
@@ -9,69 +9,80 @@ const Hero = () => {
     document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const downloadCV = () => {
+    const link = document.createElement("a");
+    link.href = "./cv.pdf";
+    link.download = "Aryan_Sharma_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center py-20 px-4 overflow-hidden">
-      {/* Subtle background decoration */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
-      
+      {/* Animated background decoration */}
+      <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent/8 rounded-full blur-3xl animate-pulse-delayed" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Text content */}
           <div className="space-y-8 animate-fade-in order-2 lg:order-1">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-sm font-medium text-primary animate-fade-in">
-              <Sparkles className="w-4 h-4" />
-              Available for hire
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/30 rounded-full text-sm font-medium text-primary animate-fade-in hover:border-primary/60 transition-colors">
+              <Sparkles className="w-4 h-4 animate-spin-slow" />
+              Available for projects
             </div>
 
-            {/* Main heading */}
+            {/* Main heading with enhanced styling */}
             <div className="space-y-4">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
-                Hello, I'm <br />
-                <span className="text-primary relative inline-block">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+                Hey, I'm <br />
+                <span className="text-primary relative inline-block hover:scale-105 transition-transform duration-300">
                   {profile.name}
                   <svg className="absolute -bottom-2 left-0 w-full" height="12" viewBox="0 0 300 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2 10C50 5 100 2 150 2C200 2 250 5 298 10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="text-primary/30"/>
+                    <path d="M2 10C50 5 100 2 150 2C200 2 250 5 298 10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="text-primary/40" />
                   </svg>
                 </span>
               </h1>
-              
+
               <div className="flex flex-wrap items-center gap-3 text-xl sm:text-2xl text-foreground/70">
                 <span className="font-semibold text-foreground">Full-Stack Developer</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                 <span>AR/WebXR Pioneer</span>
               </div>
             </div>
-            
-            {/* Quote */}
-            <blockquote className="relative pl-6 border-l-4 border-primary/30 py-2">
-              <p className="text-lg sm:text-xl text-foreground/60 italic">
+
+            {/* Enhanced Quote */}
+            <blockquote className="relative pl-6 border-l-4 border-primary/50 py-3 hover:border-primary transition-colors">
+              <p className="text-lg sm:text-xl text-foreground/70 italic font-light">
                 "Patterns emerge at the intersection of code, creativity, and cognition. I build experiences that resonate."
               </p>
             </blockquote>
-            
+
             {/* Description */}
             <p className="text-lg text-foreground/70 leading-relaxed max-w-xl">
               A polymath full-stack developer with <span className="font-semibold text-foreground">5+ years of experience</span> building AI-powered web experiences, AR/WebXR innovations, and intelligent automation pipelines. Combining TypeScript precision with strategic thinking and creative vision.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Button 
-                size="lg" 
-                className="bg-primary hover:bg-primary/90 transition-all duration-300 text-base px-8 shadow-lg hover:shadow-xl hover:scale-105 group"
-                onClick={scrollToAbout}
-              >
-                Hire Me
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-2 border-foreground/15 hover:border-primary hover:bg-primary/5 transition-all duration-300 text-base px-8 group"
+            {/* Enhanced CTA Buttons */}
+            <div className="flex flex-wrap gap-4 pt-6">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 transition-all duration-300 text-base px-8 shadow-lg hover:shadow-xl hover:scale-105 group font-semibold"
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
               >
+                <span>Get In Touch</span>
+                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-primary/40 hover:border-primary hover:bg-primary/10 transition-all duration-300 text-base px-8 group font-semibold"
+                onClick={downloadCV}
+              >
+                <FileText className="mr-2 w-4 h-4" />
                 Download CV
                 <Download className="ml-2 w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
               </Button>
@@ -105,7 +116,7 @@ const Hero = () => {
           </div>
 
           {/* Profile image with modern design */}
-          <div className="flex justify-center lg:justify-end order-1 lg:order-2 animate-fade-in px-2" style={{ animationDelay: '0.2s' }}>
+          <div className="flex justify-center lg:justify-end order-1 lg:order-2 animate-fade-in hero-image-delay px-2">
             <div className="relative w-full max-w-sm lg:max-w-none">
               {/* Decorative elements - hidden on mobile */}
               <div className="hidden sm:block absolute -top-6 -right-6 w-24 h-24 border-4 border-primary/20 rounded-3xl rotate-12" />

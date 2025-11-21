@@ -7,7 +7,10 @@ const navItems = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" }
+  { label: "Certificates", href: "#certificates" },
+  { label: "Research", href: "#research" },
+  { label: "Blog", href: "#blog" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const Navigation = () => {
@@ -36,16 +39,24 @@ const Navigation = () => {
   }, []);
 
   const scrollToSection = useCallback((href: string) => {
-    const element = document.querySelector(href === "#home" ? "body" : href);
-    element?.scrollIntoView({ behavior: "smooth" });
+    const selector = href === "#home" ? "body" : href;
+    const element = document.querySelector(selector) as HTMLElement | null;
+    if (!element) return setIsMobileMenuOpen(false);
+
+    // Compute offset to account for fixed header
+    const header = document.querySelector("nav");
+    const headerHeight = header ? header.clientHeight : 80;
+    const elementTop = element.getBoundingClientRect().top + window.scrollY;
+    const scrollTo = Math.max(0, elementTop - headerHeight - 8);
+    window.scrollTo({ top: scrollTo, behavior: "smooth" });
     setIsMobileMenuOpen(false);
   }, []);
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? 'bg-background/98 backdrop-blur-sm border-b border-border shadow-sm'
-          : 'bg-background/80 backdrop-blur-sm'
+        ? 'bg-background/98 backdrop-blur-sm border-b border-border shadow-sm'
+        : 'bg-background/80 backdrop-blur-sm'
         }`}
     >
       <div className="container mx-auto px-4">
