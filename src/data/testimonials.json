@@ -2,8 +2,7 @@
     {
         "id": 1,
         "name": "Jane Doe",
-        "avatar": "/src/assets/profile.jpg",
-        "role": "CTO, ExampleCorp",
+        "avatar": "/assets/profile.jpg",\n        "role": "CTO, ExampleCorp",
         "text": "Aryan delivered a high-quality AR experience on time. Highly recommended!",
         "rating": 5
     },

@@ -1,36 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RESEARCH_PROJECTS, { ResearchProject } from "@/config/researchProjects";
 import { Badge } from "./ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 
 const Research: React.FC = () => {
-  const [selected, setSelected] = useState<ResearchProject | null>(null);
-  const [open, setOpen] = useState(false);
+  const [projects, setProjects] = useState<ResearchProject[]>(RESEARCH_PROJECTS);
+  const [loading, setLoading] = useState(false); // No initial loading since config loads optimistically
+
+  useEffect(() => {
+    const tryFetch = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch('/api/research');
+        if (!res.ok) throw new Error('API unavailable');
+        const json = await res.json();
+        if (Array.isArray(json.data) && json.data.length > 0) {
+          setProjects(json.data);
+        }
+      } catch (e) {
+        if (process.env.NODE_ENV === 'development') {
+          console.log('Using local research projects from config');
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    tryFetch();
+  }, []);
 
   const openProject = (p: ResearchProject) => {
     setSelected(p);
     setOpen(true);
   };
 
-  // Try to load research projects from backend if available
-  const [projects, setProjects] = React.useState<ResearchProject[]>(RESEARCH_PROJECTS);
-  React.useEffect(() => {
-    let mounted = true;
-    const tryFetch = async () => {
-      try {
-        const res = await fetch('/api/research');
-        if (!res.ok) throw new Error('no backend');
-        const json = await res.json();
-        if (mounted && Array.isArray(json.data)) {
-          setProjects(json.data as ResearchProject[]);
-        }
-      } catch (e) {
-        // leave local RESEARCH_PROJECTS
-      }
-    };
-    tryFetch();
-    return () => { mounted = false };
-  }, []);
+  if (loading && projects.length === 0) {
+    return (
+      <div className="text-center py-8">
+        <div className="w-8 h-8 border-4 border-primary/20 border-t-primary rounded-full animate-spin mx-auto" />
+        <p className="mt-4 text-muted-foreground">Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <section id="research" className="py-20 px-4">

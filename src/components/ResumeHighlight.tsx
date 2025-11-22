@@ -5,7 +5,7 @@ import profile from "@/data/profile";
 const ResumeHighlight = () => {
     const downloadCV = () => {
         const link = document.createElement("a");
-        link.href = "/cv.pdf";
+        link.href = `${import.meta.env.BASE_URL}cv.pdf`;
         link.download = `${profile.name}-CV.pdf`;
         document.body.appendChild(link);
         link.click();

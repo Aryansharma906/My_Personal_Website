@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo, useState } from "react";
 import localBlogs from "@/data/blogs.json";
-import LINKEDIN_ARTICLES from "@/config/linkedinArticles";
+import LINKEDIN_ARTICLES, { LinkedinArticle } from "@/config/linkedinArticles";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink } from "lucide-react";
 
 interface BlogPost {
-    id: number;
+    id: number | string;
     title: string;
     slug: string;
     excerpt: string;
@@ -14,6 +14,7 @@ interface BlogPost {
     createdAt?: string;
     url?: string;
     isExternal?: boolean;
+    featured?: boolean;
 }
 
 const PAGE_SIZE = 6;
@@ -34,18 +35,21 @@ export const Blog = () => {
                 if (!res.ok) throw new Error('no backend');
                 const json = await res.json();
                 if (Array.isArray(json.data) && mounted) {
-                    const remote = json.data.map((article: any, idx: number) => ({
-                        id: article.id || `remote-${idx}`,
-                        title: article.title,
-                        slug: article.slug || `remote-${article.id || idx}`,
-                        excerpt: article.excerpt,
-                        tags: article.tags || [],
-                        image: article.thumbnail || article.image || '/images/blog/default.jpg',
-                        url: article.url,
-                        isExternal: true,
-                        createdAt: article.date || undefined,
-                        featured: !!article.featured,
-                    } as BlogPost));
+                    const remote: BlogPost[] = json.data.map((article: unknown, idx: number): BlogPost => {
+                        const a = article as Record<string, unknown>;
+                        return {
+                            id: (a.id as string) || `remote-${idx}`,
+                            title: String(a.title || ''),
+                            slug: (a.slug as string) || `remote-${(a.id as string) || idx}`,
+                            excerpt: String(a.excerpt || ''),
+                            tags: Array.isArray(a.tags) ? a.tags as string[] : [],
+                            image: (a.thumbnail as string) || (a.image as string) || '/images/blog/default.jpg',
+                            url: a.url as string,
+                            isExternal: true,
+                            createdAt: a.date as string,
+                            featured: !!(a.featured as boolean),
+                        };
+                    });
                     setPosts([...remote, ...(localBlogs as BlogPost[])]);
                     setLoading(false);
                     return;
@@ -56,7 +60,7 @@ export const Blog = () => {
 
             // Combine local blogs with LinkedIn articles (fallback)
             const combinedPosts: BlogPost[] = [
-                ...LINKEDIN_ARTICLES.map((article: any) => ({
+                ...LINKEDIN_ARTICLES.map((article: LinkedinArticle) => ({
                     id: String(article.id).startsWith('llm') ? article.id : `ln-${article.id}`,
                     title: article.title,
                     slug: `linkedin-${article.id}`,
@@ -70,6 +74,8 @@ export const Blog = () => {
                 })),
                 ...(localBlogs as BlogPost[]),
             ].sort((a, b) => {
+                if (a.featured && !b.featured) return -1;
+                if (!a.featured && b.featured) return 1;
                 const dateA = new Date(a.createdAt || 0).getTime();
                 const dateB = new Date(b.createdAt || 0).getTime();
                 return dateB - dateA;
@@ -188,6 +194,13 @@ export const Blog = () => {
                                                 src={post.image}
                                                 alt={post.title}
                                                 loading="lazy"
+                                                onError={(e) => {
+                                                    e.currentTarget.style.display = 'none';
+                                                    const parent = e.currentTarget.parentElement;
+                                                    if (parent) {
+                                                        parent.innerHTML = '<div className="w-full h-full bg-muted flex items-center justify-center text-6xl">📝</div>';
+                                                    }
+                                                }}
                                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                                             />
                                         )}

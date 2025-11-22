@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Download, ArrowRight, Sparkles, FileText, Mail, Github, Linkedin } from "lucide-react";
-import profileImg from "@/assets/profile.jpg";
+const profileImg = `${import.meta.env.BASE_URL}assets/profile.jpg`;
 import socials from "@/data/socials";
 import profile from "@/data/profile";
 
@@ -11,7 +11,7 @@ const Hero = () => {
 
   const downloadCV = () => {
     const link = document.createElement("a");
-    link.href = "./cv.pdf";
+    link.href = `${import.meta.env.BASE_URL}cv.pdf`;
     link.download = "Aryan_Sharma_Resume.pdf";
     document.body.appendChild(link);
     link.click();

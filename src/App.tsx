@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider } from "react-helmet-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
@@ -28,7 +28,7 @@ const App = () => (
           {/* Use a production basename only when built for production.
               This lets `npm run dev` on localhost serve routes at `/`.
             */}
-          <BrowserRouter basename={import.meta.env.PROD ? "/My_Personal_Website" : "/"}>
+          <BrowserRouter basename={import.meta.env.BASE_URL}>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/certificate/:id" element={<CertificatePage />} />

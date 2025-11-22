@@ -44,4 +44,5 @@ export const LINKEDIN_ARTICLES: LinkedinArticle[] = [
     },
 ];
 
+
 export default LINKEDIN_ARTICLES;
