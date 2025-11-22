@@ -43,4 +43,3 @@ Recording Tips
 - Use screen recording software (OBS/ScreenFlow/Camtasia) at 1080p.
 - Record audio separately if possible and sync in edit.
 - Keep terminal outputs concise; use `--silent` where needed or trim in post.
-

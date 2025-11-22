@@ -14,4 +14,3 @@ Tips:
 - Use bold, high-contrast colors (white/yellow on dark background).
 - Keep the face large if it's a talking-head video.
 - Add a small badge: "Vite + React" in a corner.
-

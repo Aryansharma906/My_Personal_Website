@@ -96,5 +96,3 @@ Notes for recording
 - Use VS Code with file icons and large editor text.
 - For voice: use a single clear microphone and record in a quiet room. Keep pace steady.
 - Consider adding small jump cuts to skip long waits (install/build) and show trimmed output.
-
-

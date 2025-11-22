@@ -7,4 +7,3 @@ const Music: React.FC = () => {
 };
 
 export default Music;
-

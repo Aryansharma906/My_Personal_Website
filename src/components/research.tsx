@@ -110,4 +110,3 @@ const Research: React.FC = () => {
 };
 
 export default Research;
-

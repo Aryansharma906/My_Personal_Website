@@ -37,4 +37,3 @@ Links
 
 Sponsors / Credits
 - Built with Vite, React, TypeScript, Tailwind CSS, shadcn-ui
-
