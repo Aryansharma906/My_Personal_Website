@@ -6,6 +6,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 const Research: React.FC = () => {
   const [projects, setProjects] = useState<ResearchProject[]>(RESEARCH_PROJECTS);
   const [loading, setLoading] = useState(false); // No initial loading since config loads optimistically
+  const [selected, setSelected] = useState<ResearchProject | null>(null);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const tryFetch = async () => {

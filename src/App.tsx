@@ -18,6 +18,18 @@ const queryClient = new QueryClient({
   },
 });
 
+const getBasename = () => {
+  try {
+    const mode = import.meta.env.MODE;
+    const baseUrl = import.meta.env.BASE_URL;
+    return mode === 'production' ? baseUrl : '/';
+  } catch (error) {
+    // defensive fallback
+    console.error('Error getting base URL:', error);
+    return '/';
+  }
+};
+
 const App = () => (
   <ErrorBoundary>
     <HelmetProvider>
@@ -28,7 +40,7 @@ const App = () => (
           {/* Use a production basename only when built for production.
               This lets `npm run dev` on localhost serve routes at `/`.
             */}
-          <BrowserRouter basename={import.meta.env.BASE_URL}>
+          <BrowserRouter basename={getBasename()}>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/certificate/:id" element={<CertificatePage />} />
